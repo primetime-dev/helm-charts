@@ -1,0 +1,8 @@
+1. Install or upgrade the chart with:
+  helm upgrade --install {{ .Release.Name }} {{ .Chart.Name }} \
+    --set image.repository=<repository> \
+    --set image.tag=<tag>
+
+2. Verify the app exposes:
+  GET /healthz
+  GET /readyz

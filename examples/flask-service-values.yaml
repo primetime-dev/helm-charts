@@ -1,0 +1,12 @@
+image:
+  repository: ghcr.io/primetime-dev/demo-service-api
+  tag: latest
+
+ingress:
+  enabled: true
+  className: nginx
+  hosts:
+    - host: demo.local
+      paths:
+        - path: /
+          pathType: Prefix

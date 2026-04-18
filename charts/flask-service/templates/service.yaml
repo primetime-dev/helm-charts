@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "flask-service.fullname" . }}
+  labels:
+    {{- include "flask-service.labels" . | nindent 4 }}
+spec:
+  selector:
+    {{- include "flask-service.selectorLabels" . | nindent 4 }}
+  ports:
+    - name: http
+      port: {{ .Values.service.port }}
+      targetPort: http
+      protocol: TCP

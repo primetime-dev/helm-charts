@@ -34,9 +34,10 @@ jobs:
           helm package charts/flask-service --destination dist
 
       - name: Log in to GHCR
-        run: echo "${{ secrets.GITHUB_TOKEN }}" | helm registry login ghcr.io \
-          --username "${{ github.actor }}" \
-          --password-stdin
+        run: |
+          echo "${{ secrets.GITHUB_TOKEN }}" | helm registry login ghcr.io \
+            --username "${{ github.actor }}" \
+            --password-stdin
 
       - name: Push chart to GHCR
         run: helm push dist/flask-service-*.tgz oci://ghcr.io/primetime-dev/charts
